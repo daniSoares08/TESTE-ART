@@ -1,0 +1,35 @@
+--------------- Constantes ----------------
+SENSORES = [0,1,2,3,4]
+MAX_AMOSTRAS = 10
+LIMITE_VOLTS = 3.0
+FATOR_CONV = 3.3 / 4095
+
+--------------- VARIÁVEIS ---------------
+leituras = { s: [] para s em SENSORES }
+alarme = falso
+
+--------------- LOOP PRINCIPAL---------------
+enquanto verdadeiro faça
+para s em SENSORES faça
+    valor = ADC_ler(s)
+    lista = leituras[s]
+    lista.append(valor)
+    se (tamanho(lista) > MAX_AMOSTRAS)
+        lista.pop(0)
+fim_para
+
+alarme = falso
+para s em SENSORES faça
+    media = soma(leituras[s]) / tamanho(leituras[s])
+    se (media * FATOR_CONV > LIMITE_VOLTS)
+        alarme = VERDADEIRO
+    fim_se
+fim_para
+
+se (alarme)
+    LED = ON
+senão LED = OFF
+
+UART_enviar(serialize(leituras))
+delay_ms(200)
+fim_enquanto

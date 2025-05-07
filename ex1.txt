@@ -1,0 +1,44 @@
+1 - Mosfets, transistores, opto acopladores, relé, resistores, capacitores, diodos e zeners.
+
+
+2 - O mosfet Q1 é do tipo P. Ele irá funcionar quando o gate receber uma tensão mais baixa
+que a entrada de 12V. Seu pino gate vai no positivo da fonte.
+O MOSFET Q2 é do tipo N. Ele liga o circuito quando o gate recebe uma tensão maior que 0V.
+Seu pino gate vai ligado no 0V.
+
+
+3 - Quando o relé é desligado, a corrente armazenada na bobina tenta continuar fluindo,
+o que gera um pulso de alta tensão. O diodo D1, fornece um caminho seguro para essa corrente
+circular internamente até se dissipar. Isso evita sobretensões que poderiam danificar componentes
+como o MOSFET Q2 ou o opto acoplador, além de reduzir ruídos EMI no sistema.
+Sem esse diodo, o pulso pode ultrapassar dezenas de volts, causando travamentos ou queima de 
+componentes sensíveis.
+
+
+4 - O OP1 é um optoacoplador, um componente que transmite sinais por meio de luz interna, em vez
+de conexões elétricas diretas. Ele funciona como um “relé óptico” e tem a função principal de
+fornecer isolação galvânica, protegendo o circuito de controle contra picos de tensão ou ruídos
+do lado de potência.
+
+No circuito, o OP1 aciona o gate do MOSFET de canal N (Q2), permitindo que o relé seja energizado
+com segurança.
+Uma aplicação comum de optoacopladores é em ambientes industriais com sinais de 24V,
+permitindo que sistemas mais sensíveis, como um Arduino de 5V, leiam os sinais com segurança e
+sem risco de queima.
+
+
+5 - a) 
+Depois dos capacitores carregados:
+Out(1): 12v
+Out(2): 0V
+Out(3): 0V
+
+b)
+Out(1):12V
+Out(2): 0V
+Out(3): 0V
+
+c)
+Out(1): 0V
+Out(2): 12V
+Out(3): 0V

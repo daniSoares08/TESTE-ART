@@ -5,7 +5,6 @@
 
 int main(void)
 {
-    /* exemplo de uso */
     const char *nome = "Daniel Soares";
     uint8_t nome_len = (uint8_t)strlen(nome);
 
