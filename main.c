@@ -25,6 +25,8 @@ int main(void)
 
     /* campo nome */
     r->nome_len = nome_len;
+    /* memcpy copia os dados de r pro novo bloco  */
+    /* memcpy(destino, origem, n) copia exatamente n bytes de origem para destino */
     memcpy(r->nome, nome, nome_len);
 
     /* serializar e desserializar para teste */
@@ -40,7 +42,7 @@ int main(void)
         return 3;
 
     /* exibe resultado */
-    printf("Nome           : %.*s\n", r2->nome_len, r2->nome);
+    printf("Nome           : %.*s\n", (*r2).nome_len, r2->nome);
     printf("Temperatura    : %d graus C\n", r2->temperatura);
     printf("Valvula aberta : %s\n", is_valvula_aberta(r2) ? "SIM" : "NAO");
     printf("Qtd vagoes     : %d\n", r2->qtd_vagoes);
